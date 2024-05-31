@@ -4,14 +4,20 @@ import streamlit as st
 
 car_data = pd.read_csv('/Users/rocio/OneDrive/Escritorio/Coding/Proyect_sprint5/vehicles_us.csv') # leer los datos
 
-hist_button = st.button('Construir histograma') # crear un botón
+st.header('Analisis de datos de anuncios de autos a partir de datos de odometro') # encabezado
 
-st.header('Histograma de datos de anuncios de venta de coches')
+build_histogram = st.checkbox('Construir histograma') # boton para crear hist
+build_scatter = st.checkbox('Construir grafico de dispersion') # boton para crear scatter
         
-if hist_button: # al hacer clic en el botón
-    
-    st.write('Creación de un histograma para el conjunto de datos de anuncios de venta de coches') # escribir un mensaje
+if build_histogram: # si se seleccion la casilla
+    st.write('Construyendo histograma para la columna odometro') # mensaje del boton
 
     fig = px.histogram(car_data, x="odometer") # crear un histograma
-
     st.plotly_chart(fig, use_container_width=True) # mostrar un gráfico Plotly interactivo
+
+if build_scatter: # si se selecciona la casilla 
+    st.write('Creacion de un grafico de dispersion para la columna odometro') # mensaje del boton
+
+    fig = px.scatter(car_data, x="odometer") # crear diagrama de dispersion 
+    st.plotly_chart(fig, use_container_width=True) # mostrar grafico 
+
