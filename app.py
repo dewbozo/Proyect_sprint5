@@ -12,7 +12,7 @@ build_scatter = st.checkbox('Construir grafico de dispersion') # boton para crea
 if build_histogram: # si se seleccion la casilla
     st.write('Construyendo histograma para la columna odometro') # mensaje del boton
 
-    fig = px.histogram(car_data, x="odometer") # crear un histograma
+    fig = px.histogram(car_data, x="odometer", y="price") # crear un histograma
     st.plotly_chart(fig, use_container_width=True) # mostrar un gráfico Plotly interactivo
 
 if build_scatter: # si se selecciona la casilla 
